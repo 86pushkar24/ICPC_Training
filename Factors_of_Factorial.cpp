@@ -5,6 +5,7 @@
 using namespace std;
 #define int long long
 #define MOD 1000000007
+
 void solve(){
     int N;
     cin>>N;
@@ -13,14 +14,15 @@ void solve(){
     // factor every number from 2 to N and count the prime factors
     for(int i=2;i<=N;i++){
         int num=i;
-        for(int j=2;j*j<=num;j++){
-            while(num%j==0){
+        for(int j=2;j*j<=num;j++){ // sqrt(num) is enough to check for prime factors
+            while(num%j==0){ // until j is no longer a factor of num : 60 -> 30 -> 15
                 primeCount[j]++;
                 num/=j;
             }
         }
-        if(num>1) primeCount[num]++;
+        if(num>1) primeCount[num]++; // the number itself is prime and greater than sqrt(i)
     }
+    
     int answer=1;
     // multiply the counts of prime factors + 1 to get the total number of divisors
     for(int i=2;i<=N;i++){

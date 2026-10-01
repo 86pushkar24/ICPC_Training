@@ -4,6 +4,7 @@
 #include "bits/stdc++.h"
 using namespace std;
 long long mod=1e9+7;
+
 long long binpow(long long a,long long b,long long m){
     a%=m;
     long long res=1;
